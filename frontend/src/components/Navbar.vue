@@ -42,24 +42,14 @@
 </template>
 
 <script lang="ts">
-import { useCookies } from "vue3-cookies";
 import { defineComponent } from 'vue';
 import NavbarItem from './NavbarItem.vue'
 
 export default defineComponent({
-	setup() {
-		const { cookies } = useCookies();
-		return { cookies };
-	},
 	data() {
 		return {
 			navbarExtended: false
 		};
-	},
-	methods: {
-		goto(link: string) {
-			window.location.href = link;
-		},
 	},
 	components: {
 		NavbarItem: NavbarItem
@@ -86,10 +76,6 @@ $layout-breakpoint: 500px;
 		display: flex;
 		justify-content: space-between;
 		padding-left: 1rem;
-	}
-
-	b {
-		color: var(--color-highlight);
 	}
 }
 
@@ -126,8 +112,8 @@ $layout-breakpoint: 500px;
 		left: 0;
 		top: 0;
 		position: fixed;
-		height: 100vh;
-		width: 100vw;
+		height: 100%;
+		width: 100%;
 		background-color: #000;
 		transition: 0.15s ease-out;
 		pointer-events: none;
@@ -156,8 +142,8 @@ $layout-breakpoint: 500px;
 		position: fixed;
 		top: 0;
 		left: 0;
-		height: 100vh;
-		width: 50vw;
+		height: 100%;
+		width: 50%;
 		padding: 2rem 1rem;
 		background-color: var(--color-background);
 		opacity: 1;

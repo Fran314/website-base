@@ -40,17 +40,38 @@ export default defineComponent({
 }
 html,
 body,
-#app,
-.view {
-	min-height: 100vh;
+#app{
+	height: 100vh;
 }
+
 body {
 	margin: 0;
 }
 .view {
+	height: 100%;
 	font-family: "Roboto", sans-serif;
 	background-color: var(--color-background);
 	color: var(--color-text);
+	overflow-y: auto;
+	&::-webkit-scrollbar {
+		width: 10px;
+
+		@media (max-width: 500px) {
+			width: 0px;
+		}
+	}
+	&::-webkit-scrollbar-track {
+		margin-top: 3rem;
+		background: var(--color-background);
+	}
+	&::-webkit-scrollbar-thumb {
+		border-radius: 5px;
+		background: var(--color-scrollbar-handle);
+		height: 10rem;
+	}
+	&::-webkit-scrollbar-thumb:hover {
+		background: var(--color-highlight);
+	}
 }
 .view.light {
 	/* LIGHT MODE */
@@ -76,24 +97,6 @@ body {
 .content {
 	padding-top: 4.5rem;
 	padding-bottom: 1rem;
-	height: 100vh;
-
-	overflow-y: scroll;
-	&::-webkit-scrollbar {
-		width: 10px;
-	}
-	&::-webkit-scrollbar-track {
-		margin-top: 3rem;
-		background: var(--color-background);
-	}
-	&::-webkit-scrollbar-thumb {
-		border-radius: 5px;
-		background: var(--color-scrollbar-handle);
-		height: 10rem;
-	}
-	&::-webkit-scrollbar-thumb:hover {
-		background: var(--color-highlight);
-	}
 }
 
 /* STYLIZED */

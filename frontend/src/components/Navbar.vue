@@ -29,6 +29,9 @@
 				/>
 			</div>
 			<div class="nav-end">
+				<div class="nav-search">
+					<search-bar />
+				</div>
 				<div class="nav-icon material-icons highlight" @click="$store.commit('toggleDarkMode')">
 					{{
 						$store.state.displayMode.darkMode ? "light_mode" : "dark_mode"
@@ -44,6 +47,7 @@
 <script lang="ts">
 import { defineComponent } from 'vue';
 import NavbarItem from './NavbarItem.vue'
+import SearchBar from './SearchBar.vue'
 
 export default defineComponent({
 	data() {
@@ -52,7 +56,8 @@ export default defineComponent({
 		};
 	},
 	components: {
-		NavbarItem: NavbarItem
+		NavbarItem: NavbarItem,
+		SearchBar: SearchBar
 	}
 });
 </script>
@@ -143,7 +148,7 @@ $layout-breakpoint: 500px;
 		top: 0;
 		left: 0;
 		height: 100%;
-		width: 50%;
+		min-width: 50%;
 		padding: 2rem 1rem;
 		background-color: var(--color-background);
 		opacity: 1;
@@ -162,7 +167,7 @@ $layout-breakpoint: 500px;
 	}
 }
 
-.nav-icon {
+.nav-icon, .nav-search {
 	align-self: center;
 	@media (max-width: $layout-breakpoint) {
 		align-self: initial;

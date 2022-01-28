@@ -1,7 +1,8 @@
 import { createStore } from 'vuex'
 import { State } from 'vue'
-
 import Cookies from 'js-cookie';
+
+document.body.classList.add((Cookies.get("preferences") === "darkmode") ? "dark" : "light");
 
 export default createStore<State>({
 	state() {
@@ -21,6 +22,8 @@ export default createStore<State>({
 		},
 		toggleDarkMode(state) {
 			state.displayMode.darkMode = !state.displayMode.darkMode;
+			document.body.classList.toggle("dark", state.displayMode.darkMode );
+			document.body.classList.toggle("light", !state.displayMode.darkMode );
 			if (state.cookies.consent && Cookies.get("cookies-consent") === "allow-preferences")
 				Cookies.set(
 					"preferences",
@@ -37,4 +40,4 @@ export default createStore<State>({
 			);
 		}
 	}
-})
+});

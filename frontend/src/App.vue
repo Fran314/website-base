@@ -10,8 +10,8 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import Navbar from './components/Navbar.vue'
-import CookiesPopUp from './components/CookiesPopUp.vue'
+import Navbar from '@/components/Navbar.vue'
+import CookiesPopUp from '@/components/CookiesPopUp.vue'
 
 export default defineComponent({
 	data() {
@@ -39,20 +39,37 @@ export default defineComponent({
 	box-sizing: border-box;
 }
 html,
-body,
-#app{
-	height: 100vh;
+body {
+	min-height: 100%;
 }
 
 body {
+	&.light {
+		/* LIGHT MODE */
+		--color-background: #fff;
+		--color-highlight: #725ac1;
+		--color-contrast: #a9c15a;
+		--color-text: #222;
+
+		--color-shadow: #0002;
+		--color-scrollbar-handle: #ddd;
+	}
+	&.dark {
+		/* DARK MODE */
+		--color-background: #24272b;
+		--color-highlight: #725ac1;
+		--color-contrast: #a9c15a;
+		--color-text: #fff;
+
+		--color-shadow: #0006;
+		--color-scrollbar-handle: #44474b;
+	}
+
 	margin: 0;
-}
-.view {
-	height: 100%;
 	font-family: "Roboto", sans-serif;
 	background-color: var(--color-background);
 	color: var(--color-text);
-	overflow-y: auto;
+
 	&::-webkit-scrollbar {
 		width: 10px;
 
@@ -61,7 +78,6 @@ body {
 		}
 	}
 	&::-webkit-scrollbar-track {
-		margin-top: 3rem;
 		background: var(--color-background);
 	}
 	&::-webkit-scrollbar-thumb {
@@ -72,26 +88,6 @@ body {
 	&::-webkit-scrollbar-thumb:hover {
 		background: var(--color-highlight);
 	}
-}
-.view.light {
-	/* LIGHT MODE */
-	--color-background: #fff;
-	--color-highlight: #725ac1;
-	--color-contrast: #a9c15a;
-	--color-text: #222;
-
-	--color-shadow: #0002;
-	--color-scrollbar-handle: #ddd;
-}
-.view.dark {
-	/* DARK MODE */
-	--color-background: #24272b;
-	--color-highlight: #725ac1;
-	--color-contrast: #a9c15a;
-	--color-text: #fff;
-
-	--color-shadow: #0006;
-	--color-scrollbar-handle: #44474b;
 }
 
 .content {
@@ -116,10 +112,11 @@ body {
 	display: flex;
 	flex-direction: column;
 	gap: 1rem;
-}
-.block h1 {
-	margin: 0;
-	align-self: center;
-	color: var(--color-highlight);
+
+	h1 {
+		margin: 0;
+		align-self: center;
+		color: var(--color-highlight);
+	}
 }
 </style>

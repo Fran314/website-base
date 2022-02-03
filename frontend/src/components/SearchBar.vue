@@ -1,7 +1,7 @@
 <template>
 	<div class="search-bar">
 		<span class="material-icons">search</span>
-		<input type="text">
+		<input type="text" placeholder="Search">
 	</div>
 </template>
 
